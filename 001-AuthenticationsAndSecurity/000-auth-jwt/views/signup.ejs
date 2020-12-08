@@ -1,0 +1,68 @@
+<%- include('partials/header'); -%>
+
+
+<h1>sign up</h1>
+<form>
+    <h2>sign up</h2>
+    <label for="name">Name</label>
+    <input type="name" name="name" required />
+    <div class="name error"></div>
+    <!-- End of name -->
+    <label for="email">Email</label>
+    <input type="email" name="email" required />
+    <div class="email error"></div>
+    <!-- End of email -->
+    <label for="password">Passowrd</label>
+    <input type="password" name="password" required />
+    <div class="password error"></div>
+    <button>Sign up</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+    const nameError = document.querySelector('.name.error');
+    const emailError = document.querySelector('.email.error');
+    const passwordError = document.querySelector('.password.error');
+
+    //attatch a submit event :: e arg == event
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); //page refreshing
+
+        //rest errors that been showed on the frontend
+        nameError.textContent = '';
+        emailError.textContent = '';
+        passwordError.textContent = '';
+
+        //get the values
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        //console.log(name,email,password);
+
+        try{
+            const result = await fetch('/signup',{
+                method: 'POST',
+                body: JSON.stringify({name,email,password}), //  body: json.stringfy({name: name,email: email,password: password}),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            //to show up errors in the frontend when detected them
+            const data = await result.json()
+            console.log(data);
+            if(data.errors){
+                nameError.textContent = data.errors.name;
+                emailError.textContent = data.errors.email;
+                passwordError.textContent = data.errors.password;
+            }
+            //detect user and redirect a user
+            if(data.user){
+                location.assign('/');
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    })
+</script>
+
+<%- include('partials/footer'); -%>

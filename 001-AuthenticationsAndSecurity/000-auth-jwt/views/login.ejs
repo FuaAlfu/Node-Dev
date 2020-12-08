@@ -1,0 +1,36 @@
+<%- include('partials/header'); -%>
+
+
+<form>
+    <h2>login</h2>
+    <!-- <label for="name">Name</label>
+    <input type="name" name="name" required />
+    <div class="name error"></div> -->
+    <!-- End of name -->
+    <label for="email">Email</label>
+    <input type="email" name="email" required />
+    <div class="email error"></div>
+    <!-- End of email -->
+    <label for="password">Passowrd</label>
+    <input type="password" name="password" required />
+    <div class="password error"></div>
+    <button>login</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+
+    //attatch a submit event :: e arg == event
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); //page refreshing
+
+        //get the values
+      //  const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email,password);
+    })
+</script>
+
+<%- include('partials/footer'); -%>
