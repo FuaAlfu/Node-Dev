@@ -1,4 +1,4 @@
-## creating a simple api
+## creating,.. simple rest api
 
 ---
 ### start with a quick setup
