@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Basic Options */
+    "target": "es6",                              
+    "module": "commonjs",                         
+    "lib": ["es2020"], 
+    "types": ["node"],                                 
+
+    /* Strict Type-Checking Options */
+    "strict": true,                               
+    "esModuleInterop": true,                     
+    "skipLibCheck": true,                     
+  }
+}
