@@ -1,0 +1,12 @@
+body{
+    font-family: sans-serif;
+}
+
+.page{
+    text-align: center;
+}
+
+.page h1{
+    font-weight: bold;
+    color: brown;
+}
