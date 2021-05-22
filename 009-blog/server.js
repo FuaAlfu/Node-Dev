@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const _ = require('lodash');
 const server = http.createServer((req,res) =>{
     console.log('request made');
     console.log(req.url, req.method);
@@ -9,6 +10,16 @@ const server = http.createServer((req,res) =>{
     //res.setHeader('Content-Type', 'text/plain');
    // res.write('serving well, glad to see you here !');
    // res.end();
+
+   //lodash
+   const num = _.random(0,50);
+   console.log(num);
+
+   const hello = _.once(() => {
+       console.log('hello');
+   });
+   hello();
+   hello();
 
    //read file :: basic routers
    res.setHeader('Content-Type', 'text/html');
