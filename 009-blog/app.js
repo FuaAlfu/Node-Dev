@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-//middleware
+//middleware  --> app.use()
 app.use(express.json());
 
 //routes
@@ -18,6 +18,15 @@ app.get('/about', (req,res) =>{
     res.sendFile('./views/about.html', {root: __dirname});
  });
 
+ //redirescts
+ app.get('/about-us',(req,res) =>{
+     res.redirect('/about');
+ });
+
+ //middleware  --> app.use()
+ app.use((req, res) => {  //404 page
+    res.status(404).sendFile('./views/404.html', {root: __dirname})
+});
 
 //fire up our app
 app.listen(
