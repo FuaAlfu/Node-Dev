@@ -15,17 +15,22 @@ app.use(express.json());
 app.get('/', (req,res) =>{
    // res.send('<p>2021 --- home page</p>');
   // res.sendFile('./views/index.html', {root: __dirname});
-  res.render('index');
+  const blogs = [
+  {title: 'gogo toto', snippet: 'loremoremoremoremoremoremoremorem'},
+  {title: 'hoho dodo', snippet: 'loremoremoremoremoremoremoremorem'},
+  {title: 'zozo hoho', snippet: 'loremoremoremoremoremoremoremorem'},
+  ];
+  res.render('index', {title: 'Home', blogs});
 });
 
 app.get('/about', (req,res) =>{
     // res.send('<p>2021 --- about page</p>');
    // res.sendFile('./views/about.html', {root: __dirname});
-   res.render('about');
+   res.render('about', {title: 'About'});
  });
 
  app.get('/blogs/create', (req,res) =>{
-     res.render('create');
+     res.render('create', {title: 'Create a new Blog'});
  })
 
  //redirescts
@@ -36,7 +41,7 @@ app.get('/about', (req,res) =>{
  //middleware  --> app.use()
  app.use((req, res) => {  //404 page
     //res.status(404).sendFile('./views/404.html', {root: __dirname})
-    res.status(404).render('404');
+    res.status(404).render('404', {title: '404'});
 });
 
 //fire up our app

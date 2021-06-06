@@ -4,13 +4,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Document | <%= title%></title>
 </head>
 <body>
+    <!-- ejs tags syntax: <%%>  :: server side rendring-->
+    <!-- <%const name = 'fua'%> -->
+
     <div class="page">
         <nav>
             <div class="title">
                 <h1>BLOG</h1>
+                <!-- <p><%= name %></p> -->
         <h3>Lorem and a lot of lorems ..</h3>
             </div>
             <ul>
@@ -22,6 +26,14 @@
         <!-- end of nav -->
         <div class="content">
             <h2>all blogs</h2>
+            <%if(blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    <h3 class="title"><%= blog.title %></h3>
+                    <p class="snippet"><%= blog.snippet %></p>
+                    <% }) %>
+                    <% } else { %>
+                        <p>there is no blogs to display..</p>
+            <% } %>
         </div>
     </div>
 </body>
