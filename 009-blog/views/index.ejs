@@ -1,28 +1,12 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document | <%= title%></title>
-</head>
+    <%- include('./partials/head.ejs') %>
+<!-- hh -->
 <body>
     <!-- ejs tags syntax: <%%>  :: server side rendring-->
     <!-- <%const name = 'fua'%> -->
 
     <div class="page">
-        <nav>
-            <div class="title">
-                <h1>BLOG</h1>
-                <!-- <p><%= name %></p> -->
-        <h3>Lorem and a lot of lorems ..</h3>
-            </div>
-            <ul>
-                <li><a href="/">home page</a></li>
-                <li><a href="/about">about page</a></li>
-                <li><a href="/blogs/create">new blogs</a></li>
-            </ul>
-        </nav>
+        <%- include('./partials/nav.ejs') %>
         <!-- end of nav -->
         <div class="content">
             <h2>all blogs</h2>
@@ -36,5 +20,6 @@
             <% } %>
         </div>
     </div>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
