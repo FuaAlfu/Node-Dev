@@ -19,12 +19,18 @@ const getDinoImage = async () =>{
     const data = await res.json();
     let dinoImage = data.value[Math.floor(Math.random() * data.value.length)];
     let dinoImageUrl = dinoImage.thumbnailUrl;
-   // let dinoAlt = dinoImage.name;
+    let dinoAlt = dinoImage.name;
     console.log(dinoImage);
+
+    //check if the current img is already exist..
+    if(document.querySelector('#dinoImage') !== null){
+        document.querySelector('#dinoImage').remove();
+    }
 
     //create an image
     let img = document.createElement('img');
+    img.id = 'dinoImage';
     img.src = dinoImageUrl;
-   // img.alt = dinoAlt;
+    img.alt = dinoAlt;
     document.querySelector('body').appendChild(img);
 }

@@ -14,4 +14,13 @@ body{
     padding: 0;
 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: center / auto url('./images/anahi-martinez-AG2-uhddJ-g-unsplash.jpg');
+    color: #101010;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.container{
+    
 }

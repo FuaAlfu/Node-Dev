@@ -1,4 +1,6 @@
-require('dotenv').config();
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+    }
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
@@ -6,13 +8,13 @@ const port = 3000 || process.env.PORT;
 
 app.use(express.static('public'));
 
-
+const api_key = process.env.API_KEY;
 //routes
 app.get('/dinoname', async (req,res) => {
    const fecthing = await fetch("https://alexnormand-dino-ipsum.p.rapidapi.com/?paragraphs=1&words=2&format=json", {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": process.env.API_KEY,
+            "x-rapidapi-key": api_key,
             "x-rapidapi-host": "alexnormand-dino-ipsum.p.rapidapi.com",
         },
     }
@@ -24,10 +26,10 @@ app.get('/dinoname', async (req,res) => {
 });
 
 app.get('/dinoimage', async (req,res) => {
-    const fecthing = await fetch("https://bing-image-search1.p.rapidapi.com/images/search?q=dinosaur&count=10", {
+    const fecthing = await fetch("https://bing-image-search1.p.rapidapi.com/images/search?q=dinosaur&count=50", {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": process.env.API_IMG,
+            "x-rapidapi-key": api_key,
             "x-rapidapi-host": "bing-image-search1.p.rapidapi.com"
         },
     });
