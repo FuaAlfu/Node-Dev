@@ -32,5 +32,5 @@ const getDinoImage = async () =>{
     img.id = 'dinoImage';
     img.src = dinoImageUrl;
     img.alt = dinoAlt;
-    document.querySelector('body').appendChild(img);
+    document.querySelector('.container').appendChild(img);
 }
