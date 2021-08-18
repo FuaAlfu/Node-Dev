@@ -11,5 +11,5 @@ app.use(bodyParser.json());
 
 
 app.listen(
-    config.port,() => console.log('Listening on ${config.port}')
+    config.port,() => console.log(`Listening on ${config.port}`)
 )
