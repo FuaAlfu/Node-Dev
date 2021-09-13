@@ -27,5 +27,23 @@ let items: Items = {
 };
 
 //Service Methods
+/*
  export const findAll = async (): Promise<Item[]> => Object.values(items);
  export const find = async (id: number): Promise<Item> => items[id];
+ */
+ export const findAll = async (): Promise<Item[]> => {...};
+ export const find = async (id: number): Promise<Item> => {...};
+ export const create = async (newItem: BaseItem): Promise<Item> => {...};
+ export const update = async (
+   id: number,
+   itemUpdate: BaseItem
+ ): Promise<Item | null> => {...};
+ export const remove = async (id: number): Promise<null | void> => {
+   const item = await find(id);
+ 
+   if (!item) {
+     return null;
+   }
+ 
+   delete items[id];
+ };
