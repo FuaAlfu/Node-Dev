@@ -1,6 +1,6 @@
 ---
 stack: node.js, typescript
-lang: all, restfull api
+lang: all, restful API
 ---
 
 ## install json.pkg with default settings
@@ -23,7 +23,7 @@ npm i -D typescript
 tsc --init
 ```
 
-## creating route for src folder
+## creating a route for the src folder
 ```
 tsc
 ```
