@@ -52,6 +52,34 @@ app.get('/news', (req,res) =>{
     res.json(articles)
 });
 
+app.get('/news/:newspaperId', async (req,res) => {
+    //console.log(req.params.newspaperId);  //for testing inside the terminal..
+   const newspaperId = req.params.newspaperId
+   const newspaperAddress = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].address
+   //console.log(newspaperAddress);
+
+   const newspaperBase = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].base
+
+   axios.get(newspaperAddress)
+   .then(response => {
+       const html = response.data
+       const $ =  cheerio.load(html)
+       const specificArticles = []
+       
+       $('a:contains("climate")',html).each(function (){
+        const title = $(this).text();
+        const url = $(this).attr('href')
+
+        specificArticles.push({
+            title,
+            url: newspaperBase + url,
+            source: newspaperId
+        })
+       })
+       res.json(specificArticles)
+   }).catch(err => console.log(err))
+})
+
 //for a test
 //app.get('/news', (req,res) =>{
     // axios.get('https://www.theguardian.com/environment/climate-crisis')
